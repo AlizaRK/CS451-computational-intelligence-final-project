@@ -131,10 +131,18 @@ class Rastrigin:
 dimension = 2
 population_size= 100
 num_parents = 10
-num_generations = 2000
+num_generations = 3000
 
 print("Running:")
 obj=Rastrigin(population_size,num_generations,num_parents, dimension)
 obj.many_gens()
 obj.plot_graph()
 
+
+# dim = 2
+# Best Solution :  [3.64594717e-04 1.98397440e-05]
+# Best Solution Fitness :    2.6450201566774467e-05
+
+#  dim = 4
+# Best Solution :  [ 0.00014637 -0.00011371  0.0007459  -0.00023474]
+# Best Solution Fitness :    0.00012812679662488335
