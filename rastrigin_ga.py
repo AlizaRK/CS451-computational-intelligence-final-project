@@ -4,13 +4,16 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 class Rastrigin:
+    '''
+        Finding the gloal minimum of Rastrigin function using Genetic Algorithm
+    '''
     def __init__(self,population_size, num_gen,num_parent, dim):
         self.pop_size = population_size
         self.pop=np.random.uniform(low=-10.0, high=10.0, size=(population_size,dim))
         self.num_gen=num_gen
         self.num_parents=num_parent
         self.dim=dim
-        # stores best fitness of each gene
+        # stores best fitness of each generation
         self.BFs = []
 
     
@@ -45,30 +48,29 @@ class Rastrigin:
         return parents
 
 
-    def crossover(self, parents, offspring_size):
+    def crossover(self, parents, num_children):
         '''
         Crossover at middle and return relevant child chromosome
         '''
-        offspring = np.empty((offspring_size, self.dim))
+        children = np.empty((num_children, self.dim))
         cp = self.dim // 2
-        for i in range(0,offspring_size, 2):
+        for i in range(0,num_children, 2):
             parent1 = parents[i]
             parent2 = parents[ i + 1]
-            offspring[i, :cp] = parent1[:cp] 
-            offspring[i, cp:] = parent2[cp:]
-            offspring[i +1, cp:] = parent1[cp:]
-            offspring[i +1, :cp] = parent2[:cp]
-        # print('o', offspring)
-        return offspring
+            children[i, :cp] = parent1[:cp] 
+            children[i, cp:] = parent2[cp:]
+            children[i +1, cp:] = parent1[cp:]
+            children[i +1, :cp] = parent2[:cp]
+        return children
 
     def mutation(self,children):
         '''
         Mutates a random numerical value of each child chromosome 
         '''
         for i in range(len(children)):
-            gene_idx = np.random.randint(0, self.dim)
+            chromosome_idx = np.random.randint(0, self.dim)
             random_value = np.random.uniform(-1.0, 1.0)
-            children[i, gene_idx] -= random_value
+            children[i, chromosome_idx] -= random_value
         return children
 
 
@@ -86,7 +88,7 @@ class Rastrigin:
             parents=self.truncation(fitness,self.pop,self.num_parents)
 
             # create offspring from these parents
-            children = self.crossover(parents,offspring_size=self.num_parents)
+            children = self.crossover(parents,num_children=self.num_parents)
             children_mutated =self.mutation(children)
 
             # survivor selection
@@ -128,10 +130,11 @@ class Rastrigin:
 
 dimension = 2
 population_size= 100
-num_parents = 20
+num_parents = 10
 num_generations = 2000
 
 print("Running:")
 obj=Rastrigin(population_size,num_generations,num_parents, dimension)
 obj.many_gens()
 obj.plot_graph()
+
