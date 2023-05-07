@@ -128,15 +128,15 @@ class Rastrigin:
        
 
 
-dimension = 2
-population_size= 100
-num_parents = 10
-num_generations = 3000
+# dimension = 2
+# population_size= 100
+# num_parents = 10
+# num_generations = 3000
 
-print("Running:")
-obj=Rastrigin(population_size,num_generations,num_parents, dimension)
-obj.many_gens()
-obj.plot_graph()
+# print("Running:")
+# obj=Rastrigin(population_size,num_generations,num_parents, dimension)
+# obj.many_gens()
+# obj.plot_graph()
 
 
 # dim = 2
