@@ -171,6 +171,8 @@ class PSO:
         for i in range(self.iterations):
             self.evaluate_fitness()
             self.updating_vel_pos()
+        print("Best solution: ", self.gbest)
+        print("Best fitness: ", self.gbestfit)
         return self.bests, self.gbest
 
 def main(pop_size, iterations, dim, w, c1, c2):
@@ -192,47 +194,3 @@ def main(pop_size, iterations, dim, w, c1, c2):
     None
         """
     
-#     ps = PSO(pop_size=pop_size, iterations=iterations, dim=dim, w=w, c1=c1, c2=c2)
-#     bests, best = ps.run_algorithm()
-#     iters = np.arange(1000)
-
-#     # plot x and y
-#     print(f"Parameters:\npopulation size = 100\niterations = 100\nw = {w}\nc1 = {c1}\nc2 = {c2}")
-#     print(best, bests[-1])
-#     return bests
-
-
-
-# if __name__ == "__main__":
-#     iters = np.arange(2000)
-#     # w = np.random.uniform(0, 1)
-#     # c1 = np.random.uniform(1.5, 2.5)
-#     # c2 = np.random.uniform(1.5, 2.5)
-#     w = 0.5
-#     c1 = 2
-#     c2 = 2
-#     iterations = 2000
-#     dim = 2
-#     population_size = 100
-#     bests1 = main(population_size, iterations, dim, w, c1, c2)  
-
-#     # w = np.random.uniform(0, 1)
-#     # c1 = np.random.uniform(1.5, 2.5)
-#     # c2 = np.random.uniform(1.5, 2.5)
-#     iterations = 2000
-#     dim = 5
-#     population_size = 100
-#     bests2 = main(population_size, iterations, dim, w, c1, c2)   
-
-#     plt.plot(iters, bests1, label="dimension 2")
-#     plt.plot(iters, bests2, label="dimension 5")
-
-#     # set labels for x and y axes and title
-#     plt.xlabel('Iterations')
-#     plt.ylabel('gbest')
-#     plt.title('PSO on the function')
-#     plt.legend()
-
-#     # display the plot
-#     plt.show()  
-

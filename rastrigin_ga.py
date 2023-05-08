@@ -108,7 +108,7 @@ class Rastrigin:
         bf_index = np.argmin(final_fitness_scores)
         print("Best Solution : ", self.pop[bf_index])
         print("Best Solution Fitness :   ", np.min(final_fitness_scores))
-        return self.BFs
+        return self.BFs, np.min(final_fitness_scores)
 
     def plot_graph(self):
         '''
